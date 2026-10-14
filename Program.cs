@@ -6,32 +6,41 @@ namespace ENCRIPTACION
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("-------------------------------------------------------------------------------------------------------------------------------------------\n");
+            Console.WriteLine(@"@@@@@ @   @  @@@  @@@@  @@@ @@@@  @@@@@  @@@   @@@  @@@  @@@  @   @    @@@@  @@@@@    @      @@@   @@@@    @@@@   @@@  @@@@  @@@  @@@@ 
+@     @@  @ @     @   @  @  @   @   @   @   @ @      @  @   @ @@  @    @   @ @        @     @   @ @        @   @ @   @ @   @  @  @     
+@@@@  @ @ @ @     @@@@   @  @@@@    @   @@@@@ @      @  @   @ @ @ @    @   @ @@@@     @     @   @  @@@     @@@@  @@@@@ @@@@   @   @@@  
+@     @  @@ @     @  @   @  @       @   @   @ @      @  @   @ @  @@    @   @ @        @     @   @     @    @   @ @   @ @   @  @      @ 
+@@@@@ @   @  @@@  @   @ @@@ @       @   @   @  @@@  @@@  @@@  @   @    @@@@  @@@@@    @@@@@  @@@  @@@@     @@@@  @   @ @@@@  @@@ @@@@  ");
+            Console.WriteLine("\n-------------------------------------------------------------------------------------------------------------------------------------------\n");
             string? ruta = " ", rutaGuardado = " ", contraseña = " ";
-            Console.WriteLine("Dime la ruta (copiada) del archivo: ");
+            Console.Write("Dime la ruta (copiada) del archivo: ");
             ruta = Vacio(ruta);
-            Console.WriteLine("Dime la ruta donde quieres guardar el nuevo archivo: ");
+            Console.Write("Dime la ruta donde quieres guardar el nuevo archivo: ");
             rutaGuardado = Vacio(rutaGuardado);
-            Console.WriteLine("Dime la contraseña de Encriptación: ");
+            Console.Write("Dime la contraseña de Encriptación: ");
             contraseña = Vacio(contraseña);
             try
             {
                 XOR(ruta, rutaGuardado, contraseña);
+                Console.WriteLine("¡¡¡ARCHIVO CREADO Y GUARDADO!!!");
+                Console.ReadKey();
             }
             catch (FileNotFoundException)
             {
-                Console.WriteLine("❌ El archivo no existe.");
+                Console.WriteLine("El archivo no existe.");
             }
             catch (DirectoryNotFoundException)
             {
-                Console.WriteLine("❌ La carpeta no existe.");
+                Console.WriteLine("La carpeta no existe.");
             }
             catch (UnauthorizedAccessException)
             {
-                Console.WriteLine("❌ No tienes permisos.");
+                Console.WriteLine("No tienes permisos.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Error: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
         }
         static void XOR(string ruta, string rutaGuardado, string claveString)
